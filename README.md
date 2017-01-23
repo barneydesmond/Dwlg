@@ -10,3 +10,11 @@ ________________________________________________________________________________
    3.   ./Dwlg
    
    .Easy to Use just follow the instructions
+
+##  :heavy_exclamation_mark: Requirements
+
+- A linux operating system.
+
+- Must install gcc :  ``` ```   sudo apt-get install gcc 
+ ``` ``` ``` ``` ``` ``` ```  or 
+  ``` ``` ``` ``` ``` ``` ```  sudo apt-get install build-essential
