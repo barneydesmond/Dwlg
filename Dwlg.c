@@ -2,7 +2,30 @@
 #include <stdlib.h>
 #include <string.h>
 
+void logo(){
 
+printf("\n         ;1111111111111111111111111;,\n");
+printf("         f00000000000000G           .G000G.\n");
+printf("     ,ttti;;;....0000....              ,00000\n");
+printf("     ,fffi:::    0000....                000000\n");
+printf("         f000::::    0008                 G00000.\n");
+printf("         f000::::    0008                  000000\n ");
+printf("     ,fff:   ffff00000008                  t000000\n");
+printf("     ,fff:   ffff00000008                  .000000L\n");
+printf("                 0000....                   0000000\n ");
+printf("                 0000...                   0000000\n");
+printf("             G000tfft0008                   0000000\n");
+printf("             G000tfft0008                   0000000\n");
+printf("         :000,   ::::0008                   000000G\n");
+printf("         :000,   ::::0008                  :000000\n");
+printf("                     0008                  800000,\n");
+printf("                     0008                 f00000.\n");
+printf("                 00000008                L0000G\n");
+printf("                 00000000              ,0000t\n");
+printf("                 0000000000L,.   ..;0000L\n\n");
+
+
+}
 
 
 void put(char m[100][100],char ch[100],int i){
@@ -102,7 +125,7 @@ for(i=0;i<k+1;i++){
 
 if((strlen(ch)>=lmin)&&(strlen(ch)<=lmax)){
 fprintf(f,"%s\n",ch);
-//printf("%s\n",ch);
+
 }
 
 }
@@ -159,7 +182,7 @@ do{
 
 if(i==n){ if(((100*x)*1.2/fac)<=100){  system("clear"); printf("NOW:[%lf%]\n",((100*x)*1.2/fac)); } else{ system("clear"); printf("NOW:[100%]\n"); }  }
 
-        t[i]=full(t,i,n,x,fac);   //  printf("%d",t[i]);
+        t[i]=full(t,i,n,x,fac);   
 
     if(t[i]==-1){
      i=i-1;
@@ -202,9 +225,9 @@ int n,l,lmin=0,lmax=100;
 char txt[100][100],c,sh[100];
 int t[100];
 FILE* f= NULL;
+logo();
 
-
-    //f = fopen("test.txt", "w+");
+  
 
 
 
