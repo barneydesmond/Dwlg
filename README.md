@@ -4,10 +4,10 @@ ________________________________________________________________________________
 
 # Getting Started
 
-   1.   git clone https://github.com/daljal/Dwlg.git
-   
-   2.   make Dwlg.c
-   3.   ./Dwlg
+   1. git clone https://github.com/daljal/Dwlg.git
+   2. make Dwlg.c
+   3. ./Dwlg
+   4. you can add it to command line using : sudo cp Dwlg /usr/local/bin/
    
    .Easy to Use just follow the instructions
 
