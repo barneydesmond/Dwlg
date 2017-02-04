@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include"lg.h"
 typedef struct
 {
     int a;
@@ -9,30 +9,7 @@ typedef struct
 
 }dret;
 
-void logo(){
 
-printf("\n       CCCf.                                           ;LCCC       ");
-printf("\n       tCCCCCCCL                                  ;CCCCCCCC        ");
-printf("\n        CCt  ;CCCCCt                           CCCCC;  ;CC1        ");
-printf("\n         CC      :CCCC,                     LCCC:      CCC         ");
-printf("\n         .CC        ,CCCt                 CCC,        LCC          ");
-printf("\n          .CC          CCC.             CCC          fCC           ");
-printf("\n            CC          ,CCC           CC.          LCf            ");
-printf("\n             tCL          CCCCCCCCCCCCCC           CC              ");
-printf("\n               CCi        .CCCCCCCCCCCC.         CC;               ");
-printf("\n                 LCC       CCCCCCCCCCCC        CC,                 ");
-printf("\n                    CCC   CCCCCCCCCCCCCC    CCf                    ");
-printf("\n                       .,CCCCCCCCCCCCCCCCt .                       ");
-printf("\n                      ;CCC:   iCCCCC    CCCL                       ");
-printf("\n                    CCCCCCC:   LCCC . .CCCCCCC.                    ");
-printf("\n                       fCCCCC   CCC  CCCCCf                        ");
-printf("\n                           ::   CC;  ::                            ");
-printf("\n                                CC                                 ");
-printf("\n                                                                 \n");
-
-
-
-}
 
 
 void put(char m[100][100],char ch[100],int i){
