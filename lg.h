@@ -38,7 +38,7 @@ printf("\n\n");
 }break;
 
 case(2):{
-printf(RED"\n                                                        ");
+printf(CYN"\n                                                        ");
 printf("\n                                                        ");
 printf("\n                                          1             ");
 printf("\n                                         ,L    L.       ");
@@ -51,7 +51,7 @@ printf("\n                                     L fLLLLLLL,        ");
 printf("\n                                    1 LLLLLLLL.         ");
 printf("\n                                    .LLLLLLLi           ");
 printf("\n                                   :ff111iii            ");
-printf("\n                                 .LL:.LLLi              ");
+printf("\n                                 .LL"RED"*:"CYN"LLLi              ");
 printf("\n                                .LfLLLL ;t              ");
 printf("\n                                      iLLi              ");
 printf("\n         :LLLLLLLL1                 .LLLLL              ");
@@ -60,9 +60,9 @@ printf("\n     ;LLLLLLLLLLLLLLLLL;          tLLLLLLLL:            ");
 printf("\n     LLLLLLLLLffLLLLLLLLL        :LLLLLLLLLLf           ");
 printf("\n    :LLLLLL        fLLLLLL:      LLLLLLLLLLLLt          ");
 printf("\n     LLLLL.          :LLLLLf     LLLLLLLLLLLLL          ");
-printf("\n     fLLLL;            .LLLLL.   iLLLLLLLLLLLi          ");
-printf("\n      ,LLLLf              :LLLL:  ,LLLLLLLLL:           ");
-printf("\n         tLLLL1               :LLLL: :LLLL:         \n\n"RESET);
+printf(RED"\n     fLLLL; "CYN"           .LLLLL.   iLLLLLLLLLLLi          ");
+printf(RED"\n      ,LLLLf   "CYN"           :LLLL:  ,LLLLLLLLL:           ");
+printf(RED"\n         tLLLL1    "CYN"           :LLLL: :LLLL:         \n\n"RESET);
 }
 break;
 
