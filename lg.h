@@ -38,8 +38,7 @@ printf("\n\n");
 }break;
 
 case(2):{
-printf(CYN"\n                                                        ");
-printf("\n                                                        ");
+printf(CYN"\n");
 printf("\n                                          1             ");
 printf("\n                                         ,L    L.       ");
 printf("\n                                         LL  .LL.       ");
@@ -101,17 +100,17 @@ break;
 
 case 4:{
 printf("\n");
-printf(GRN"\n                                 ;G.                  CL    ");
-printf(YEL"\n                                 ;CCG               LGCL      ");
-printf(BLU"\n                                 ;CCCCf           iGCCCL   ");
-printf(MAG"\n                                 ;CCCCCC;       ,GCCCCCL      ");
-printf(CYN"\n                                 ;CCCCCCCCCCCCCCCCCCCCCL     ");
-printf(WHT"\n                                 ;CCCCCCCCCCCCCCCCCCCCCL   ");
-printf(RED"\n                                 ;CCCCCCCCCCCCCCCGGCCCCL      ");
-printf(GRN"\n                                 ;CCCt,C,LCCCCG1,C,LCCCL    ");
-printf(GRN"\n                                 ;CCCGGGGGCCCCCGGCCCCCCL        ");
-printf(BLU"\n                                 ;CCCCCCCCG...GCCCCCCCCL               ");
-printf(MAG"\n                          1GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGL       "RESET);
+printf(GRN"\n        ;G.                  CL    ");
+printf(YEL"\n        ;CCG               LGCL      ");
+printf(BLU"\n        ;CCCCf           iGCCCL   ");
+printf(MAG"\n        ;CCCCCC;       ,GCCCCCL      ");
+printf(CYN"\n        ;CCCCCCCCCCCCCCCCCCCCCL     ");
+printf(WHT"\n        ;CCCCCCCCCCCCCCCCCCCCCL   ");
+printf(RED"\n        ;CCCCCCCCCCCCCCCGGCCCCL      ");
+printf(GRN"\n        ;CCCt,C,LCCCCG1,C,LCCCL    ");
+printf(GRN"\n        ;CCCGGGGGCCCCCGGCCCCCCL        ");
+printf(BLU"\n        ;CCCCCCCCG...GCCCCCCCCL               ");
+printf(MAG"\n 1GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGL       "RESET);
 printf("\n\n");
 }break;
 

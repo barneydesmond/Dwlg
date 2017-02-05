@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include"lg.h"
+
 typedef struct
 {
     int a;
@@ -54,15 +55,20 @@ return i;
 
 int insert(char m[100][100]){
 int i=0 ;
-char ch[100],c,sh[100];
+char ch[100],sh[100],a[2];
 
-printf("do you have an input file (default : N) ? [y/Y] : ");
-scanf("%c",&c);
-if((c=='Y')||(c=='y')){
+do{
+printf("*[press "GRN"1"RESET" ] you have an input file\n*[press "GRN"2"RESET" ] insert them one by one\n\n your choice :   ");
+scanf(" %s", &a);
+}while((a[0]!='1')&&(a[0]!='2'));
+
+switch(a[0]){
+case ('1'):{
+
            FILE* ftxt = NULL;
            do{
            do{
-            printf(" (Input_folder) /../filename.txt :   ");
+            printf(GRN"\n(Input_folder)"RESET" /../filename.txt :   ");
             scanf("%s",sh);
            } while(!fopen(sh,"r+"));
            ftxt = fopen(sh,"r+");
@@ -70,9 +76,9 @@ if((c=='Y')||(c=='y')){
            i=vider(ftxt,m);
            return (i);
 
-}
-else{
-        printf("\nwrite your guesses , in the end write w&q ");
+}break;
+case('2'):{
+        printf("\nwrite your guesses , at the END write "GRN"w&q "RESET);
 do{
     do{
     printf("\nN°[%d] : ",i+1);
@@ -85,8 +91,9 @@ do{
 
 }while(((ch[0]!='w')||(ch[1]!='&')||(ch[2]!='q')||(ch[3]!='\0')));
 
-}
+}break;
 
+}
 }
 
 
@@ -226,58 +233,71 @@ return (strlen(ch));
 }
 
 
+dret contsz(int l){
 
+dret a;
+char c[2];
+
+a.a=0;
+a.b=999;
+
+  printf("\ncontrol password length [Y/y] (default N) ? :  ");
+
+    scanf("%s",&c);
+
+
+if((c[0]=='y')||(c[0]=='Y')){
+
+
+
+    do{
+        printf("minimum password length  (max= %d) :  ",l);
+        scanf("%d",&a.a);
+    }while((a.a<0)||(a.a>l));
+
+
+    do{
+        printf("maximum password length  (max= %d) :  ",l);
+        scanf("%d",&a.b);
+    }while((a.b<0)||(a.b>l)||(a.b<a.a));
+
+}
+return a;
+
+
+
+}
 
 int main()
 {
 int n,l,lmin=0,lmax=999;
-char txt[100][100],c,sh[100];
+char txt[100][100],sh[100];
 int t[100];
+dret sz;
+sz.a=0;
+sz.b=999;
 FILE* f= NULL;
 logo();
 
 
 n=insert(txt);
-
-
-
-    printf("\ncontrol password length [Y/y] (default N) ? :  ");
-
-    scanf(" %c", &c);
-
-
-if((c=='y')||(c=='Y')){
-
-    l=lstrlen(txt,n);
-
-    do{
-        printf("minimum password length  (max= %d) :  ",l);
-        scanf("%d",&lmin);
-    }while((lmin<0)||(lmin>l));
-
-
-    do{
-        printf("maximum password length  (max= %d) :  ",l);
-        scanf("%d",&lmax);
-    }while((lmax<0)||(lmax>l)||(lmax<lmin));
-
-}
+l=lstrlen(txt,n);
+sz=contsz(l);
 
 
           do{
-            printf("\n (output_folder) /../filename.txt :   ");
+            printf(GRN"\n(output_folder)"RESET" /../filename.txt :   ");
             scanf("%s",sh);
-           } while((sh[0]!='/')||(strlen(sh)<6));
+           } while(!fopen(sh,"w+"));
            f = fopen(sh,"w+");
 
 
-
-caller(txt,t,n,f,lmin,lmax);
+caller(txt,t,n,f,sz.a,sz.b);
 
 
 fclose(f);
 
-printf("\n%s was successfully generated\n\n",sh);
+printf(YEL"\n%s "RESET"was successfully generated\n\n",sh);
 
     return 0;
 }
