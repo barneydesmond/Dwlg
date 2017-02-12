@@ -1,5 +1,6 @@
 # Dwlg
-Linux word list generator
+Dranlidion word list generator
+An easy tool to generate word list based on a combination of collected information about the target .This tool will improve your chances to reach the correct password or username.
 __________________________________________________________________________________
 
 # Getting Started
