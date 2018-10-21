@@ -9,17 +9,22 @@ typedef struct {
 } dret;
 
 
+// At row 'i' in the matrix, copy from ch to m
+// I think this should just be strncpy from ch to m[i]
 void put(char m[100][100], char ch[100], int i) {
-    int j ;
+    int j;
 
-    for(j=0;j<strlen(ch);j++){
+    // calculate strlen(ch) once
+    for(j=0; j<strlen(ch); j++) {
         m[i][j] = ch[j];
     }
 }
 
+// Read from file into a 100x100 matrix. They must've been praying that lines
+// are no longer than 100 characters (incl. null).
 int vider(FILE* fich, char m[100][100]) {
-
-    int j=0,i=0;
+    int i=0;
+    int j=0;
 
     do {
         j=0;
@@ -45,30 +50,30 @@ int vider(FILE* fich, char m[100][100]) {
 
 
 int insert(char m[100][100]) {
-    int i=0 ;
-    char ch[100], sh[100], a[2];
+    int i=0;
+    char ch[100];
+    char sh[100];
+    char mode;
 
     do {
         printf("*[press "GRN"1"RESET" ] you have an input file\n*[press "GRN"2"RESET" ] insert them one by one\n\n your choice :   ");
-        scanf(" %s", &a); /* XXX: buffer overflow possible? */
-    } while( (a[0]!='1') && (a[0]!='2') );
+        mode = getchar();
+    } while( (mode!='1') && (mode!='2') );
 
-    switch (a[0]) {
+    switch (mode) {
         case ('1'): {
+            FILE* ftxt = NULL;
 
-           FILE* ftxt = NULL;
-           do{
-           do{
-            printf(GRN"\n(Input_folder)"RESET" /../filename.txt :   ");
-            scanf("%s",sh);
-           } while(!fopen(sh,"r+"));
-           ftxt = fopen(sh,"r+");
-           }while(!ftxt);
-           i=vider(ftxt,m);
-           return (i);
-
-        }
-        break;
+            do {
+                do {
+                    printf(GRN"\n(Input_folder)"RESET" /../filename.txt :   ");
+                    scanf("%s",sh);
+                } while(!fopen(sh,"r+"));
+                ftxt = fopen(sh,"r+");
+            } while(!ftxt);
+            i = vider(ftxt, m);
+            return i;
+        } break;
 
         case('2'): {
             printf("\nwrite your guesses , at the END write "GRN"w&q "RESET);
@@ -87,6 +92,7 @@ int insert(char m[100][100]) {
         }
         break;
     }
+    return i;
 }
 
 
@@ -139,7 +145,6 @@ int full(int t[100], int k, int n, double x, double fac, int h) {
     } else if(k==n) {
         return -2; // back 2 steps
     } else {
-
         i = -1;
 
         do {
@@ -161,153 +166,142 @@ int full(int t[100], int k, int n, double x, double fac, int h) {
 
         } while (b==1);
 
-        if (v<n-k) {
+        if (v < n-k) {
             return i;
-        } else if (v>=n-k+h) {
+        } else if (v >= n-k+h) {
             return (-1);
         }
 
     }
 
+// XXX: return 0 here?
 }
 
-double factor(int n){
+double factorial(int n) {
+    if (n>1) {
+        return n*factorial(n-1);
+    }
+    return 1;
+}
 
-            if (n>1) return n*factor(n-1);
 
-            else return 1;
+void caller(char txt[100][100], int t[100], int n, FILE* f, int lmin, int lmax) {
+    int i=0,e=0;
+    double fac,x=1;
+    dret s;
 
+    for(i=0; i<n; i++){
+        t[i]=i;
+        maker(f, txt, t, i, lmin, lmax, n);
+    }
+
+    fac = factorial(n);
+
+    do {
+        if ((t[0]!=n-1) || (i!=0) || (n==999)) {
+            t[i] = full(t,i,n,x,fac,0);
+        } else {
+            t[i] = full(t,i,n,x,fac,1);
         }
 
+        if(t[i] == -1) {
+            i--;
+        } else if (t[i] == -2) {
+            x++;
+            t[i-1]=-1;
+            i=i-2;
+        } else if (t[i]>=0) {
+            s = maker(f,txt,t,i,lmin,lmax,n);
+            i = i + s.a;
+            if (s.b == 0) {
+                e=1;
+            }
+        }
 
+        if ((e==1) && (t[0]!=n-1)) {
+            t[i] = -11;
+        }
 
-
-void caller(char txt[100][100],int t[100], int n , FILE* f,int lmin,int lmax){
-
-int i=0,e=0;
-double fac,x=1;
-dret s;
-
-for(i=0;i<n;i++){
-    t[i]=i;
-    maker(f,txt,t,i,lmin,lmax,n);
-}
-
-fac=factor(n);
-
-do{
-
-
-       if((t[0]!=n-1)||(i!=0)||(n==999)){
-        t[i]=full(t,i,n,x,fac,0);
-       }else{  t[i]=full(t,i,n,x,fac,1);   }
-
-    if(t[i]==-1){
-     i=i-1;
-    }else if(t[i]==-2){
-        x++;
-        t[i-1]=-1;
-        i=i-2;
-       }else if(t[i]>=0) { s=maker(f,txt,t,i,lmin,lmax,n);
-                           i=i+s.a;
-                            if(s.b==0){
-                                     e=1;
-                                     }
-                          }
-if((e==1)&&(t[0]!=n-1)){t[i]=-11;}
-
-}while(t[i]!=-11);
-
+    } while (t[i] != -11);
 }
 
 
-int lstrlen(char txt[100][100],int n ){
+int lstrlen(char txt[100][100], int n) {
+    int i, j;
+    char ch1[100], ch[100];
 
-int j,i;
-char ch1[100],ch[100];
+    ch[0] = '\0';
 
-ch[0]='\0';
+    for (i=0; i<n; i++) {
+        j=0;
+        do {
+            ch1[j]=txt[i][j];
+            j++;
+        } while ((ch1[j-1] != '\0'));
 
-for(i=0;i<n;i++){
-    j=0;
-   do{
-     ch1[j]=txt[i][j];
-    j++;
- }while((ch1[j-1]!='\0'));
+        strcat(ch, ch1);
+    }
 
-    strcat(ch,ch1);
+    return (strlen(ch));
 }
 
-return (strlen(ch));
 
+dret contsz(int l) {
+    dret a;
+    char c[2];
+
+    a.a=0;
+    a.b=999;
+
+    printf("\ncontrol password length [Y/y] (default N) ? :  ");
+
+    scanf("%s", &c);
+
+
+    if ((c[0]=='y') || (c[0]=='Y')) {
+        do {
+            printf("minimum password length  (max= %d) :  ",l);
+            scanf("%d",&a.a);
+        } while ((a.a<0) || (a.a>l));
+
+
+        do {
+            printf("maximum password length  (max= %d) :  ",l);
+            scanf("%d",&a.b);
+        } while ((a.b<0) || (a.b>l) || (a.b<a.a));
+    }
+
+    return a;
 }
 
 
-dret contsz(int l){
+int main() {
+    int n,l,lmin=0,lmax=999;
+    char txt[100][100],sh[100];
+    int t[100];
+    dret sz;
+    sz.a=0;
+    sz.b=999;
+    FILE* f= NULL;
+    logo();
 
-dret a;
-char c[2];
+    n=insert(txt);
+    l=lstrlen(txt,n);
+    sz=contsz(l);
 
-a.a=0;
-a.b=999;
-
-  printf("\ncontrol password length [Y/y] (default N) ? :  ");
-
-    scanf("%s",&c);
-
-
-if((c[0]=='y')||(c[0]=='Y')){
-
-
-
-    do{
-        printf("minimum password length  (max= %d) :  ",l);
-        scanf("%d",&a.a);
-    }while((a.a<0)||(a.a>l));
+    do {
+        printf(GRN"\n(output_folder)"RESET" /../filename.txt :   ");
+        scanf("%s",sh);
+    } while (!fopen(sh,"w+"));
+    f = fopen(sh,"w+");
 
 
-    do{
-        printf("maximum password length  (max= %d) :  ",l);
-        scanf("%d",&a.b);
-    }while((a.b<0)||(a.b>l)||(a.b<a.a));
-
-}
-return a;
+    caller(txt, t, n, f, sz.a, sz.b);
 
 
+    fclose(f);
 
-}
-
-int main()
-{
-int n,l,lmin=0,lmax=999;
-char txt[100][100],sh[100];
-int t[100];
-dret sz;
-sz.a=0;
-sz.b=999;
-FILE* f= NULL;
-logo();
-
-
-n=insert(txt);
-l=lstrlen(txt,n);
-sz=contsz(l);
-
-
-          do{
-            printf(GRN"\n(output_folder)"RESET" /../filename.txt :   ");
-            scanf("%s",sh);
-           } while(!fopen(sh,"w+"));
-           f = fopen(sh,"w+");
-
-
-caller(txt,t,n,f,sz.a,sz.b);
-
-
-fclose(f);
-
-printf(YEL"\n%s "RESET"was successfully generated\n\n",sh);
+    printf(YEL"\n%s "RESET"was successfully generated\n\n",sh);
 
     return 0;
 }
