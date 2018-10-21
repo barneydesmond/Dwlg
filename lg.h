@@ -9,13 +9,13 @@
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
 
-void logo(){
-int a;
-srand(time(NULL));
+void logo() {
+    int a;
+    srand(time(NULL));
     a = (rand() % (4 - 1 + 1)) + 1;
 
-    switch(a){
-case(1):{
+    switch(a) {
+case(1): {
 printf(CYN "\n       CCCf.                                           ;LCCC       ");
 printf("\n       tCCCCCCCL                                  ;CCCCCCCC        ");
 printf("\n        CCt  ;CCCCCt                           CCCCC;  ;CC1        ");
@@ -35,9 +35,9 @@ printf("\n                           ::   CC;  ::                            ");
 printf("\n                                CC                                 "RESET);
 printf("\n\n");
 
-}break;
+} break;
 
-case(2):{
+case(2): {
 printf(CYN"\n");
 printf("\n                                          1             ");
 printf("\n                                         ,L    L.       ");
@@ -62,12 +62,9 @@ printf("\n     LLLLL.          :LLLLLf     LLLLLLLLLLLLL          ");
 printf(RED"\n     fLLLL; "CYN"           .LLLLL.   iLLLLLLLLLLLi          ");
 printf(RED"\n      ,LLLLf   "CYN"           :LLLL:  ,LLLLLLLLL:           ");
 printf(RED"\n         tLLLL1    "CYN"           :LLLL: :LLLL:         \n\n"RESET);
-}
-break;
+} break;
 
-case (3):
-    {
-
+case (3): {
 printf(RED "\n                       ,1tLLLft;.                       ");
 printf("\n                 tCCCCCCCCCCCCCCCCCCCC,                 ");
 printf("\n             :CCCCCCCCtffffti.   .tCCCCCCC              ");
@@ -95,10 +92,9 @@ printf("\n            t000000.                 ;80008             ");
 printf("\n               i800000008800088800000000                ");
 printf("\n                    t8000000000008G:                    "RESET);
 printf("\n\n");
-    }
-break;
+} break;
 
-case 4:{
+case 4: {
 printf("\n");
 printf(GRN"\n        ;G.                  CL    ");
 printf(YEL"\n        ;CCG               LGCL      ");
@@ -112,7 +108,7 @@ printf(GRN"\n        ;CCCGGGGGCCCCCGGCCCCCCL        ");
 printf(BLU"\n        ;CCCCCCCCG...GCCCCCCCCL               ");
 printf(MAG"\n 1GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGL       "RESET);
 printf("\n\n");
-}break;
+} break;
 
 }
 }
